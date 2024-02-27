@@ -2,8 +2,8 @@ import { Channel, connect } from "amqplib";
 import { config } from "dotenv";
 import { Server } from "socket.io";
 import * as http from "http";
-import CandleController from "src/controllers/CandleController";
-import { Candle } from "src/models/CandleModel";
+import CandleController from "../controllers/CandleController";
+import { Candle } from "../models/CandleModel";
 
 config();
 
@@ -23,8 +23,6 @@ export default class CandleMessageChannel {
       }
     })
     this._io.on('connection', () => console.log('Web socket connnection created'))
-
-    this._createMessageChannel()
   }
 
   private async _createMessageChannel() {
@@ -39,27 +37,30 @@ export default class CandleMessageChannel {
   }
 
   // Criar listener para receber mensagem no MessageChannel
-  consumeMessages() {
-    this._channel.consume(process.env.QUEUE_NAME, async msg => {
-      // Mensagem em formato String (JSON)
-      const candleObj = JSON.parse(msg.content.toString())
-      console.log('Message received')
-      console.log(candleObj)
+  async consumeMessages() {
+    await this._createMessageChannel()
 
-      // Avisar RabbitMQ que foi consumida a fila (acknowledge)
-      this._channel.ack(msg)
+    if (this._channel) {
+      this._channel.consume(process.env.QUEUE_NAME, async msg => {
+        // Mensagem em formato String (JSON)
+        const candleObj = JSON.parse(msg.content.toString())
+        console.log('Message received')
+        console.log(candleObj)
 
-      // Converter em Candle
-      const candle: Candle = candleObj
-      await this._candleCtrl.save(candle)
-      console.log('Candle saved to database')
+        // Avisar RabbitMQ que foi consumida a fila (acknowledge)
+        this._channel.ack(msg)
 
-      // Enviar para o frontend
-      this._io.emit(process.env.SOCKET_EVENT_NAME, candle)
-      console.log('New Candle emmited by Web Socket')
-    })
+        // Converter em Candle
+        const candle: Candle = candleObj
+        await this._candleCtrl.save(candle)
+        console.log('Candle saved to database')
 
-    console.log('Candle consumer started')
+        // Enviar para o frontend
+        this._io.emit(process.env.SOCKET_EVENT_NAME, candle)
+        console.log('New Candle emmited by Web Socket')
+      })
+
+      console.log('Candle consumer started')
+    }
   }
-
 }

@@ -1,4 +1,4 @@
-import { Candle, CandleModel } from "src/models/CandleModel";
+import { Candle, CandleModel } from "../models/CandleModel";
 
 // Operações do Banco
 export default class CandleController {
