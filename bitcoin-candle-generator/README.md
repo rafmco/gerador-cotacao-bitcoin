@@ -4,51 +4,68 @@
 </p>
 
 
-## 💡Sobre o projeto
+## 💡Módulo Gerador
 
-App gerador de cotações de bitcoin através da API Coingecko (https://www.coingecko.com/pt).
-- Utiliza Node.js, TypeScript e Docker para gerar um contêiner RabbitMQ;
-- Uma API é responsável por consumir as candles da fila no RabbitMQ, salvá-las no banco de dados e emitir via Web Socket cada nova candle que chegar para o app frontend;
-- Frontend utiliza Vue 3 com Class Components e Vuex;
+Utiliza Node.js, TypeScript, Axios e um Docker RabbitMQ, realizando a consulta na API de preços e enviando para a fila;
 
 
 ## 🛠️ Construído com:
-Gerador
+
 - [![Node][Node.js]][Node-url]
 - [![TypeScript][TypeScript]][TypeScript-url]
 - [![Yarn][Yarn]][Yarn-url]
 - amqplib
+- Axios
+- Dotenv
 - [![Docker][Docker]][Docker-url]
 - [![RabbitMQ][RabbitMQ]][RabbitMQ-url]
-
-API
-- [![Node][Node.js]][Node-url]
-- [![TypeScript][TypeScript]][TypeScript-url]
- - Express
- - amqplib
- - Socket.io
- - Mongoose
-
- FrontEnd
- - Vue 3 (Vuex 4 + Class Components)
 
 
 ## 🚀 Instalação
 
 1. Baixe o repositório (`git clone git@github.com:Rafmco/gerador-cotacao-bitcoin.git`)
-2. Navegue até a pasta do projeto (`cd gerador-cotacao-bitcoin`)
-3. Copie e altere os arquivos de configurações conforme desejado
-4. Instalar dependências (`yarn add amqplib axios dotenv`)
-5. Instalar dependências de desenvolvimento (`yarn add @types/amqplib @types/node ts-node typescript --dev`)
-6. Criar docker compose
-7. Configurar tsconfig.json
+2. Navegue até a pasta do módulo Gerador (`cd bitcoin-candle-generator`)
+3. Instalar dependências
+4. Criar docker RabbitMQ
+5. Copie e altere os arquivos de configurações conforme desejado
+6. `yarn start`
 
 
-## 🔀 Roadmap
+## 💻 Requsitos
+- Windows
+  - Node.js
+  - Docker (https://www.docker.com/products/docker-desktop/)
 
-- [X] Criar o módulo Gerador de Cotações
-- [X] Criar o módulo API
-- [X] Criar o Front-End
+
+## 🚶‍♂️ Etapas
+- Criar Diretório
+  - `yarn init -y`
+- Instalar dependências
+  - `yarn add amqplib axios dotenv`
+  - dotenv (trabalhar com variáveis de ambiente)
+  - typescript
+  - ts-node (interpretar typescript)
+  - axios (requisições web)
+  - amqplib
+- Dependências de desenvolvimento
+	- `yarn add @types/amqplib @types/node ts-node typescript --dev`
+- Criar docker compose do RabbitMQ
+  - `docker-compose.yml`
+  - Criar e 'startar' container
+	`docker-compose up`
+- Configurar opções de compilação no `tsconfig.json`
+  - `outDir` e `rootDir`
+- Configurar Scripts de `start` e `build` no `Package.json`
+- Criar Enums, Models e Messages
+- 'Setar' variáveis no `.env` para o RabbitMQ
+
+
+## 🧭 Referências
+
+- https://youtu.be/Yp-GM-nJ-Pg?si=TXe0DoOGHOd-hWI_
+- github.com/sidneyroberto/serie-bitcoin-node-rabbitmq
+- Serviço Web leitura de valores de Cripto Moedas
+  - https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd
 
 
 ## © Licença
@@ -104,3 +121,19 @@ Distribuído sob a licença MIT. Veja `LICENSE.txt` para mais informações.
 [Notion-url]:https://www.notion.so/
 [Expo]:https://img.shields.io/badge/Build-3275E7.svg?style=for-the-badge&logo=EXPO&labelColor=000&logoColor=FFF
 [Expo-url]:https://expo.dev
+[Vue.js]:https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]:https://vuejs.org/
+[Vuetify]:https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=AEDDFF
+[Vuetify-url]:https://vuetifyjs.com/en/
+[Express]:https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
+[Express-url]:https://github.com/expressjs/express
+[MongoDB]:https://img.shields.io/badge/MongoDB-4EA94B?logo=mongodb&logoColor=white&style=for-the-badge
+[MongoDB-url]:https://www.mongodb.com
+[Socket.io]:https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101
+[Socket.io-url]:https://socket.io
+[Vite]:https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]:https://vitejs.dev
+[SolidJS]:https://img.shields.io/badge/SolidJS-2c4f7c?style=for-the-badge&logo=solid&logoColor=c8c9cb
+[SolidJS-url]:https://www.solidjs.com
+[NPM]:https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white
+[NPM-url]:https://www.npmjs.com
