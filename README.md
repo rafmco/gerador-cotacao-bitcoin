@@ -7,9 +7,10 @@
 ## 💡Sobre o projeto
 
 App gerador de cotações de bitcoin através da API Coingecko (https://www.coingecko.com/pt).
-- Utiliza Node.js, TypeScript e Docker para gerar um contêiner RabbitMQ;
-- Uma API é responsável por consumir as candles da fila no RabbitMQ, salvá-las no banco de dados e emitir via Web Socket cada nova candle que chegar para o app frontend;
-- Frontend utiliza Vue 3 com Class Components e Vuex;
+Possui 3 módulos:
+- Gerador - Utiliza Node.js, TypeScript, Axios e um Docker RabbitMQ, realizando a consulta na API de preços e enviando para a fila;
+- API - Utiliza Node.js, TypeScript, Socket.io e um Docker MongoDB, para consumir as cotações da fila no RabbitMQ, salvá-las no MongoDB e emitir via Web Socket para o Frontend cada nova cotação;
+- APP - O frontend utiliza Vue 3 com Class Components, Vuex, Socket.io-Client e ApexCharts para receber as novas cotações do Web Socket e exibir em um gráfico de "CandleStick";
 
 
 ## 🛠️ Construído com:
@@ -24,24 +25,39 @@ Gerador
 API
 - [![Node][Node.js]][Node-url]
 - [![TypeScript][TypeScript]][TypeScript-url]
- - Express
+- [![Yarn][Yarn]][Yarn-url]
+- [![Express][Express]][Express-url]
  - amqplib
- - Socket.io
- - Mongoose
+- [![Docker][Docker]][Docker-url]
+- [![Socket.io][Socket.io]][Socket.io-url]
+- [![MongoDB][MongoDB]][MongoDB-url]
 
- FrontEnd
- - Vue 3 (Vuex 4 + Class Components)
+ APP 
+- [![Vue][Vue.js]][Vue-url]
+- [![TypeScript][TypeScript]][TypeScript-url]
+- [![Yarn][Yarn]][Yarn-url]
+- Vue-CLI
+- Vue 3 + Class Components
+- Vuex 4
 
 
 ## 🚀 Instalação
 
 1. Baixe o repositório (`git clone git@github.com:Rafmco/gerador-cotacao-bitcoin.git`)
-2. Navegue até a pasta do projeto (`cd gerador-cotacao-bitcoin`)
-3. Copie e altere os arquivos de configurações conforme desejado
-4. Instalar dependências (`yarn add amqplib axios dotenv`)
-5. Instalar dependências de desenvolvimento (`yarn add @types/amqplib @types/node ts-node typescript --dev`)
-6. Criar docker compose
-7. Configurar tsconfig.json
+2. Navegue até a pasta do módulo Gerador (`cd bitcoin-candle-generator`)
+3. Instalar dependências
+4. Criar docker RabbitMQ
+5. Copie e altere os arquivos de configurações conforme desejado
+6. `yarn start`
+7. Navegue até a pasta do módulo API (`cd bitcoin-candle-api`)
+8. Instalar dependências
+9. Criar docker MongoDB
+10. Copie e altere os arquivos de configurações conforme desejado
+11. `yarn start`
+12. Navegue até a pasta do módulo APP (`cd bitcoin-candle-app`)
+13. Instalar dependências
+14. Copie e altere os arquivos de configurações conforme desejado
+15. `yarn serve`
 
 
 ## 🔀 Roadmap
@@ -104,3 +120,19 @@ Distribuído sob a licença MIT. Veja `LICENSE.txt` para mais informações.
 [Notion-url]:https://www.notion.so/
 [Expo]:https://img.shields.io/badge/Build-3275E7.svg?style=for-the-badge&logo=EXPO&labelColor=000&logoColor=FFF
 [Expo-url]:https://expo.dev
+[Vue.js]:https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]:https://vuejs.org/
+[Vuetify]:https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=AEDDFF
+[Vuetify-url]:https://vuetifyjs.com/en/
+[Express]:https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
+[Express-url]:https://github.com/expressjs/express
+[MongoDB]:https://img.shields.io/badge/MongoDB-4EA94B?logo=mongodb&logoColor=white&style=for-the-badge
+[MongoDB-url]:https://www.mongodb.com
+[Socket.io]:https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101
+[Socket.io-url]:https://socket.io
+[Vite]:https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]:https://vitejs.dev
+[SolidJS]:https://img.shields.io/badge/SolidJS-2c4f7c?style=for-the-badge&logo=solid&logoColor=c8c9cb
+[SolidJS-url]:https://www.solidjs.com
+[NPM]:https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white
+[NPM-url]:https://www.npmjs.com
