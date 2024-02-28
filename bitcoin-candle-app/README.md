@@ -25,6 +25,8 @@ O frontend utiliza Vue 3 com Class Components, Vuex, Socket.io-Client e ApexChar
 3. Instalar dependências
 4. Copie e altere os arquivos de configurações conforme desejado
 5. `yarn serve`
+6. Visualizar cotações
+   - `http://localhost:8080/`
 
 
 ## 💻 Requsitos
