@@ -28,6 +28,8 @@ Utiliza Node.js, TypeScript, Socket.io e um Docker MongoDB, para consumir as cot
 4. Criar docker MongoDB
 5. Copie e altere os arquivos de configurações conforme desejado
 6. `yarn start`
+7. Consultar API:
+   - `http://localhost:3000/candles/5`
 
 
 ## 💻 Requsitos
