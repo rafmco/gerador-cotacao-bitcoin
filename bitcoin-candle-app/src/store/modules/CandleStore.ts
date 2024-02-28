@@ -27,7 +27,7 @@ export default class CandleStore extends VuexModule {
     const result = await http.get(`${process.env.VUE_APP_CANDLES_API_ENDPOINT}/10`)
     const candlesObj = result.data
     // Mapear para objetos de Candle
-    const candles: Candle[] = candlesObj.map((c: any) => new Candle(c))
+    const candles: Candle[] = candlesObj.map((c: object) => new Candle(c))
 
     // Inverter Array
     this.context.commit('_initializeCandles', candles.reverse())

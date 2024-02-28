@@ -7,7 +7,7 @@ export default class Candle {
   low = 0
   color = ''
 
-  constructor(candleObj: any) {
+  constructor(candleObj: object) {
     Object.assign(this, candleObj)
     this.finalDateTime = new Date(this.finalDateTime)
   }
