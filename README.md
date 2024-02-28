@@ -47,8 +47,8 @@ API
 ## 🔀 Roadmap
 
 - [X] Criar o módulo Gerador de Cotações
-- [ ] Criar o módulo API
-- [ ] Criar o Front-End
+- [X] Criar o módulo API
+- [X] Criar o Front-End
 
 
 ## © Licença
