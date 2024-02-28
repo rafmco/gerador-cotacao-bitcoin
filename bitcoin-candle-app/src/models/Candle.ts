@@ -1,11 +1,11 @@
 export default class Candle {
-  currency: string = ''
-  finalDateTime: Date = new Date()
-  open: number = 0
-  close: number = 0
-  high: number = 0
-  low: number = 0
-  color: string = ''
+  currency = ''
+  finalDateTime = new Date()
+  open = 0
+  close = 0
+  high = 0
+  low = 0
+  color = ''
 
   constructor(candleObj: any) {
     Object.assign(this, candleObj)
