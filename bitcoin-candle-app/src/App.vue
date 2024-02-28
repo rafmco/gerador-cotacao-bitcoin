@@ -1,9 +1,11 @@
 <template>
-  <Header />
-  <CandleStickChart
-    v-if="candles.length > 0"
-    :candles="candles"
-  />
+  <div>
+    <Header />
+    <CandleStickChart
+      v-if="candles.length > 0"
+      :candles="candles"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,6 +26,7 @@ import Candle from './models/Candle'
     CandleStickChart
   },
 })
+
 export default class App extends Vue {
 
   candleStore = getModule(CandleStore, store)
