@@ -1,11 +1,8 @@
 import { Channel, connect } from "amqplib";
-import { config } from "dotenv";
 import { Server } from "socket.io";
 import * as http from "http";
 import CandleController from "../controllers/CandleController";
 import { Candle } from "../models/CandleModel";
-
-config();
 
 // Abrir conexão com fila do RabbitMQ, consumir Mensagens, gravar no banco de dados e enviar a mensagem para o frontend
 export default class CandleMessageChannel {
