@@ -37,27 +37,27 @@ Utiliza Node.js, TypeScript, Axios e um Docker RabbitMQ, realizando a consulta n
   - Docker (https://www.docker.com/products/docker-desktop/)
 
 
-## 🚶‍♂️ Etapas
+## ➡️ Etapas
 - Criar Diretório
   - `yarn init -y`
 - Instalar dependências
   - `yarn add amqplib axios dotenv`
   - dotenv (trabalhar com variáveis de ambiente)
   - typescript
-  - ts-node (interpretar typescript)
+  - ts-node (compilar/interpretar typescript)
   - axios (requisições web)
-  - amqplib
+  - amqplib (conexões com RabbitMQ)
 - Dependências de desenvolvimento
-	- `yarn add @types/amqplib @types/node ts-node typescript --dev`
+  - `yarn add @types/amqplib @types/node ts-node typescript --dev`
 - Criar docker compose do RabbitMQ
   - `docker-compose.yml`
   - Criar e 'startar' container
-	`docker-compose up`
+    - `docker-compose up`
 - Configurar opções de compilação no `tsconfig.json`
   - `outDir` e `rootDir`
 - Configurar Scripts de `start` e `build` no `Package.json`
-- Criar Enums, Models e Messages
 - 'Setar' variáveis no `.env` para o RabbitMQ
+- Criar Enums, Models e Messages
 
 
 ## 🧭 Referências
