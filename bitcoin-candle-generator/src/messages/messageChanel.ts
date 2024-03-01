@@ -1,9 +1,6 @@
-import { config } from "dotenv";
 import { Channel, connect } from 'amqplib';
 
 export const createMessageChanel = async (): Promise<Channel> => {
-  config();
-
   try {
     const connection = await connect(process.env.AMQP_SERVER)
     const channel = await connection.createChannel()

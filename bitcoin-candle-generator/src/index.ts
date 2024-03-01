@@ -1,11 +1,9 @@
-import { config } from "dotenv";
+require('dotenv').config();
+
 import axios from "axios";
 import Period from "./enums/Period";
 import Candle from "./models/Candle";
 import { createMessageChanel } from "./messages/messageChanel";
-
-// Config .ENV
-config()
 
 const readMarketPrice = async (): Promise<number> => {
   const result = await axios.get(process.env.PRICES_API)
